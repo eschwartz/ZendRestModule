@@ -32,7 +32,13 @@ class SerializationGroups {
 		$actions = $this->getControllerActions($controller);
 
 		$groups = array_reduce($actions, function($groups, $action) use ($controller) {
-			$groups[$action] = $this->getAnnotatedGroups($controller, $action);
+			$group = $this->getAnnotatedGroups($controller, $action);
+
+			// Line added to remove 'Action' from the end of the action name
+			$action = preg_replace('/^(.*)Action$/', '$1', $action);
+
+			$groups[$action] = $group;
+
 			return $groups;
 		}, []);
 

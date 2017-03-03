@@ -134,9 +134,11 @@ class RestExceptionStrategy extends AbstractListenerAggregate
 		]);
 		$evt->setResult($viewModel);
 
-		$evt->getResponse()
-			->setStatusCode($errorConfig['httpCode']);
+		$response = $evt->getResponse();
 
+		if ($response instanceof Response) {
+			$response->setStatusCode($errorConfig['httpCode']);
+		}
 
 		$this->getEventManager()
 			->trigger('exception', null, new RestErrorEvent([
