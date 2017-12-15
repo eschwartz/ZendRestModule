@@ -1,3 +1,5 @@
+**NOTE** This is not the official repo for `ZendRestModule`. You want [`aerisweather/ZendRestModule`](https://github.com/aerisweather/ZendRestModule).
+
 # ZendRestModule
 
 A Zend Framework 2 module to help you create RESTful web services.
